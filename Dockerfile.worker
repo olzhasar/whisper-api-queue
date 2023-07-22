@@ -10,8 +10,8 @@ RUN pip install --upgrade pip && pip install "poetry==$POETRY_VERSION"
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock ./
-RUN poetry export --without-hashes -f requirements.txt | pip install -r /dev/stdin
+RUN poetry export --without-hashes -f requirements.txt --only=worker | pip install -r /dev/stdin
 
-COPY . .
+COPY worker/* .
 
 CMD ["celery", "-A", "app:app", "worker"]
