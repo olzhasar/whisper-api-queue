@@ -64,3 +64,7 @@ disallow_any_explicit = true
 disallow_any_generics = true
 show_error_codes = true
 exclude = ".venv"
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
