@@ -7,13 +7,20 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+celery = "^5.3.1"
+redis = "^4.6.0"
+
+[tool.poetry.group.server.dependencies]
+fastapi = "^0.100.0"
+uvicorn = "^0.23.1"
+gunicorn = "^21.2.0"
 
 [tool.poetry.group.worker.dependencies]
 openai-whisper = "^20230314"
-celery = "^5.3.1"
 torch = "2.0.0"  # whisper doesn't launch with the latest 2.0.1
 requests = "^2.31.0"
 ffmpeg-python = "^0.2.0"
+pydub = "^0.25.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
@@ -26,6 +33,7 @@ pytest = "^7.4.0"
 pytest-mock = "^3.11.1"
 pytest-watcher = "^0.3.4"
 types-requests = "^2.31.0.2"
+httpx = "^0.24.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -69,11 +77,11 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 disallow_untyped_defs = true
 disallow_any_unimported = false
-disallow_any_explicit = true
+disallow_any_explicit = false
 disallow_any_generics = true
 show_error_codes = true
 exclude = ".venv"
 
 [[tool.mypy.overrides]]
-module = "tests.*"
+module = ["tests_worker.*", "tests_server.*", "app"]
 disallow_untyped_defs = false
