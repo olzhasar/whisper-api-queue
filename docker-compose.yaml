@@ -1,0 +1,26 @@
+services:
+  server:
+    container_name: cogram-server
+    build:
+      context: .
+      dockerfile: ./Dockerfile.server
+    ports:
+      - "8000:8000"
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379
+      - CELERY_RESULT_BACKEND=redis://redis:6379
+    depends_on:
+      - redis
+  worker:
+    container_name: cogram-worker
+    build:
+      context: .
+      dockerfile: ./Dockerfile.worker
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379
+      - CELERY_RESULT_BACKEND=redis://redis:6379
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    container_name: cogram-redis
