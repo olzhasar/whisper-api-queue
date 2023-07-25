@@ -22,16 +22,6 @@ class StubTranscriber(Transcriber):
 
 
 @pytest.fixture
-def audio_content():
-    return b"test_content"
-
-
-@pytest.fixture
-def audio_filename():
-    return "input.mp3"
-
-
-@pytest.fixture
 def transcriber():
     return StubTranscriber()
 

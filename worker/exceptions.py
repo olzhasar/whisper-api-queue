@@ -1,2 +1,2 @@
-class RetriableNetworkError(BaseException):
+class RetriableNetworkError(Exception):
     pass
