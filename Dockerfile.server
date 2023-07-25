@@ -11,6 +11,6 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 RUN poetry export --without-hashes -f requirements.txt --only=main,server | pip install -r /dev/stdin
 
-COPY server/* .
+COPY ./server/. .
 
 CMD ["gunicorn", "app:app", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]

@@ -15,6 +15,6 @@ RUN poetry export --without-hashes -f requirements.txt --only=main,worker | pip 
 COPY worker/load_model.py ./
 RUN python load_model.py
 
-COPY worker/* .
+COPY ./worker/. .
 
 CMD ["celery", "-A", "main:app", "worker", "--loglevel", "INFO"]
