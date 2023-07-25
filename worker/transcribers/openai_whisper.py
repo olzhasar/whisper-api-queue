@@ -21,6 +21,12 @@ class WhisperTranscriber(Transcriber):
         if segment.frame_rate != 16_000:
             segment = segment.set_frame_rate(16_000)
 
+        if segment.sample_width != 2:
+            segment = segment.set_sample_width(2)
+
+        if segment.channels != 1:
+            segment = segment.set_channels(1)
+
         return np.array(segment.get_array_of_samples()).astype(np.float32) / 32768.0
 
     def run(self, filename: str, content: bytes) -> dict[str, str]:
