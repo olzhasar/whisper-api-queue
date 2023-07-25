@@ -12,6 +12,11 @@ docker-compose up
 
 ### Making test requests
 
+When you run `docker-compose`, the server container will be available at `http://localhost:8000/`. You can make requests to this address.
+
+If you want to test local mp3 files, you need to make them available via web requests. There is a pre-made script that exposes your file using the `dummy` server and makes a request to the running server.
+You can invoke the script specifying the path to the input mp3 file:
+
 ```sh
 ./scripts/test_request.sh /path/to/file.mp3
 ```
