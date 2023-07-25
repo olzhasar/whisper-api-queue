@@ -1,0 +1,16 @@
+FROM python:3.11-slim
+
+ENV PYTHONBUFFERED=1 \
+  POETRY_VIRTUALENVS_IN_PROJECT=true \
+  POETRY_VERSION=1.5.1
+
+RUN pip install --upgrade pip && pip install "poetry==$POETRY_VERSION"
+
+WORKDIR /app
+
+COPY pyproject.toml poetry.lock ./
+RUN poetry export --without-hashes -f requirements.txt --only=main,server | pip install -r /dev/stdin
+
+COPY server/* .
+
+CMD ["gunicorn", "app:app", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
