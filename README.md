@@ -27,7 +27,7 @@ You can invoke the script specifying the path to the input mp3 file:
 
 This project requires Python version 3.11 and [`poetry`](https://python-poetry.org/) for dependency management. Make sure you have those installed
 
-The project currently runs on linux machines only because of the [openai whisper](https://github.com/openai/whisper) dependency. If you have MacOS or Windows, considering using virtual machines for development.
+The project currently runs on linux machines only because of the [openai whisper](https://github.com/openai/whisper) dependency. If you have MacOS or Windows, consider using virtual machines for development.
 
 ### Set up
 
