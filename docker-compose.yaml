@@ -1,6 +1,6 @@
 services:
   server:
-    image: cogram-server
+    image: whisper-server
     build:
       context: .
       dockerfile: ./Dockerfile.server
@@ -12,7 +12,7 @@ services:
     depends_on:
       - redis
   worker:
-    image: cogram-worker
+    image: whisper-worker
     build:
       context: .
       dockerfile: ./Dockerfile.worker
@@ -22,8 +22,8 @@ services:
     depends_on:
       - redis
   dummy:
-    image: cogram-dummy
-    container_name: dummy
+    image: whisper-dummy
+    container_name: whisper-dummy
     volumes:
       - ./media:/var/media
     ports:
@@ -33,4 +33,4 @@ services:
       dockerfile: ./Dockerfile.dummy
   redis:
     image: redis
-    container_name: cogram-redis
+    container_name: whisper-redis
