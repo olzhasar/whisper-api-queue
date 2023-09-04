@@ -1,4 +1,7 @@
-# cogram-whisper
+# OpenAI Whisper rest api and task queue
+
+OpenAI whisper model exposed as a Rest API with task queue.
+Powered by FastAPI and Celery.
 
 ## Usage
 
