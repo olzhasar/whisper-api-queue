@@ -5,7 +5,7 @@ from pydantic import BaseModel, HttpUrl
 ASR_TASK_NAME = "run_asr"
 
 celery_app = Celery()
-app = FastAPI(title="Cogram Whisper API")
+app = FastAPI(title="Whisper API")
 
 
 class PostData(BaseModel):
